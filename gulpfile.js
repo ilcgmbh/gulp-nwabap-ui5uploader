@@ -13,7 +13,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('test', function () {
-    gulp.src('test.js', { read: false })
+    gulp.src('test/*.js', { read: false })
         .pipe(mocha({ reporter: 'spec' }))
         .on('error', gutil.log);
 });

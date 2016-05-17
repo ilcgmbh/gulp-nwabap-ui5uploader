@@ -1,4 +1,4 @@
 .gitignore
 .jshintrc
 gulpfile.js
-test.js
+test/*

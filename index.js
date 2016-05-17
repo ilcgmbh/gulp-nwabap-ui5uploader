@@ -11,10 +11,10 @@ const PLUGIN_NAME = 'gulp-nwabap-ui5uploader';
 
 module.exports = function (options) {
     if (typeof options !== 'object') {
-        this.emit(
-            'error',
-            new PluginError(PLUGIN_NAME, 'options must be an object')
-        );
+        // this.emit(
+        //     'error',
+            throw new PluginError(PLUGIN_NAME, 'options must be an object')
+        // );
     }
 
 //   if (typeof options.destination !== 'string') {
@@ -23,6 +23,10 @@ module.exports = function (options) {
 
     if (!options.auth || !options.auth.user || !options.auth.pwd) {
         throw new PluginError(PLUGIN_NAME, '"auth" option not (fully) specified (check user name and password).');
+    }
+
+    if (!options.conn || !options.conn.server) {
+        throw new PluginError(PLUGIN_NAME, '"conn" option not (fully) specified (check server).');
     }
 
     if (!options.ui5 || !options.ui5.package || !options.ui5.bspcontainer || !options.ui5.bspcontainer_text) {
