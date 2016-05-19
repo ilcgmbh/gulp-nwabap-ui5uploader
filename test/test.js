@@ -131,7 +131,7 @@ describe("gulp-nwabap-ui5uploader", function () {
 
     describe("when calling with valid parameters", function () {
         it("should emit on streamed files", function(done) {
-            gulp.src(fixtures('*'), { buffer: false })
+            gulp.src(fixtures('**/*'), { buffer: false })
                 .pipe(ui5uploader(opts))
                 .on('error', function (err) {
                     expect(err.message).to.equal('Streams are not supported!');
@@ -140,11 +140,12 @@ describe("gulp-nwabap-ui5uploader", function () {
         });
 
         it("should not throw any exception", function (done) {
-            gulp.src(fixtures("*"))
+            gulp.src(fixtures('**/*'))
             //var file = gutils.File( {path:"./test.txt", contents: new Buffer("some content")} );
-            .pipe(ui5uploader(opts))
-            .end(done);
-
+                .pipe(ui5uploader(opts))
+                .on('end', function(){done();})
+             //   .end();
+            //done();
             //expect(function() { stream.write(file); }).to.not.throw();
         });
     });

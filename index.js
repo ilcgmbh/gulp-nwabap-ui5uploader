@@ -13,7 +13,7 @@ module.exports = function (options) {
     if (typeof options !== 'object') {
         // this.emit(
         //     'error',
-            throw new PluginError(PLUGIN_NAME, 'options must be an object')
+            throw new PluginError(PLUGIN_NAME, 'options must be an object');
         // );
     }
 
@@ -69,9 +69,14 @@ module.exports = function (options) {
         // Flush
         function (cb) {
             var store = new filestore(options);
-            store.syncFiles(sources, cwd, function (error, syncedfiles) {
+            var s = sources.map(function(source) {
+                return path.relative(cwd, source.path) || '.';
+            });
+
+            var me = this;
+            store.syncFiles(s, cwd, function (error, syncedfiles) {
                 if (error) {
-                    this.emit('error', new PluginError(PLUGIN_NAME, error.stack));
+                    me.emit('error', new PluginError(PLUGIN_NAME, error));
                 }
 
                 if (syncedfiles) {
