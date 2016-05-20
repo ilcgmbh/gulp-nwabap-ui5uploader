@@ -1,6 +1,6 @@
 'use strict';
 
-var filestore   = require('./lib/filestore'),
+var Filestore   = require('./lib/filestore'),
     gutil       = require('gulp-util'),
     path        = require('path'),
     through     = require('through2'),
@@ -68,9 +68,14 @@ module.exports = function (options) {
 
         // Flush
         function (cb) {
-            var store = new filestore(options);
+            var store = new Filestore(options);
+
+            sources = sources.filter(function(source) {
+                return !source.isNull();
+            });
+
             var s = sources.map(function(source) {
-                return path.relative(cwd, source.path) || '.';
+                return path.relative(cwd, source.path).replace(/\\/g, '/') || '.';
             });
 
             var me = this;
@@ -87,95 +92,6 @@ module.exports = function (options) {
 
                 cb();
             });
-
-            // sources = sources.filter(function(source) {
-            // return !source.isNull() ||
-            //     options.emptyDirectories ||
-            //     (source.path === cwd && options.recursive);
-            // });
-
-            // if (sources.length === 0) {
-            // cb();
-            // return;
-            // }
-
-            // var shell = options.shell;
-            // if (options.port) {
-            // shell = 'ssh -p ' + options.port;
-            // }
-
-            // var destination = options.destination;
-            // if (options.hostname) {
-            // destination = options.hostname + ':' + destination;
-            // if (options.username) {
-            //     destination = options.username + '@' + destination;
-            // }
-            // } else {
-            // destination = path.relative(cwd, path.resolve(process.cwd(), destination));
-            // }
-
-            // var config = {
-            // options: {
-            //     'a': options.archive,
-            //     'n': options.dryrun,
-            //     'R': options.relative !== false,
-            //     'c': options.incremental,
-            //     'd': options.emptyDirectories,
-            //     'e': shell,
-            //     'r': options.recursive && !options.archive,
-            //     't': options.times && !options.archive,
-            //     'u': options.update,
-            //     'v': !options.silent,
-            //     'z': options.compress,
-            //     'chmod': options.chmod,
-            //     'exclude': options.exclude,
-            //     'include': options.include,
-            //     'progress': options.progress,
-            //     'links': options.links
-            // },
-            // source: sources.map(function(source) {
-            //     return path.relative(cwd, source.path) || '.';
-            // }),
-            // destination: destination,
-            // cwd: cwd
-            // };
-
-            // if (options.clean) {
-            // if (!options.recursive && !options.archive) {
-            //     this.emit(
-            //     'error',
-            //     new PluginError(PLUGIN_NAME, 'clean requires recursive or archive option')
-            //     );
-            // }
-            // config.options['delete'] = true;
-            // }
-
-            // if (!options.silent) {
-            // var handler = function(data) {
-            //     data.toString().split('\r').forEach(function(chunk) {
-            //     chunk.split('\n').forEach(function(line, j, lines) {
-            //         log('gulp-rsync:', line, (j < lines.length - 1 ? '\n' : ''));
-            //     });
-            //     });
-            // };
-            // config.stdoutHandler = handler;
-            // config.stderrHandler = handler;
-
-            // gutil.log('gulp-rsync:', 'Starting rsync to ' + destination + '...');
-            // }
-
-            // rsync(config).execute(function(error, command) {
-            // if (error) {
-            //     this.emit('error', new PluginError(PLUGIN_NAME, error.stack));
-            // }
-            // if (options.command) {
-            //     gutil.log(command);
-            // }
-            // if (!options.silent) {
-            //     gutil.log('gulp-rsync:', 'Completed rsync.');
-            // }
-            // cb();
-            // }.bind(this));
         }
     );
 };

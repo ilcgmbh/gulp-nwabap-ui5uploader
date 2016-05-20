@@ -21,27 +21,27 @@ $ npm install gulp-nwabap-ui5uploader --save-dev
 ### Upload to `$TMP` package
 
 ```js
-var gulp = require(`gulp`);
-var ui5uploader = require(`gulp-nwabap-ui5uploader`);
+var gulp = require('gulp');
+var ui5uploader = require('gulp-nwabap-ui5uploader');
 
-gulp.task(`deploy`, function() {
-  return gulp.src(`build/**`)
+gulp.task('deploy', function() {
+  return gulp.src('build/**')
     .pipe(ui5uploader({
         conn: {
-            server: `http://myserver:8000`
+            server: 'http://myserver:8000'
         },
         auth: {
-            user: `username`,
-            pwd: `password`
+            user: 'username',
+            pwd: 'password'
         },
         ui5: {
-            package: `$TMP`,
-            bspcontainer: `ZZ_UI5_LOCAL`,
-            bspcontainer_text: `UI5 upload local objects`
+            package: '$TMP',
+            bspcontainer: 'ZZ_UI5_LOCAL',
+            bspcontainer_text: 'UI5 upload local objects'
         },
         resources: {
-            cwd: `build-folder`,
-            src: `**/*.*`
+            cwd: 'build-folder',
+            src: '**/*.*'
         }        
     }));
 });
@@ -50,14 +50,14 @@ gulp.task(`deploy`, function() {
 ### Upload to `$TMP` package
 
 ```js
-var sUser = grunt.option(`user`);
-var sPwd = grunt.option(`pwd`);
+var sUser = grunt.option('user');
+var sPwd = grunt.option('pwd');
 
 grunt.initConfig({
   nwabap_ui5uploader: {
     options: {
       conn: {
-        server: `http://myserver:8000`,
+        server: 'http://myserver:8000',
       },
       auth: {
         user: sUser,
@@ -67,13 +67,13 @@ grunt.initConfig({
     upload_build: {
       options: {
         ui5: {
-           package: `$TMP`,
-           bspcontainer: `ZZ_UI5_LOCAL`,
-           bspcontainer_text: `UI5 upload local objects`
+           package: '$TMP',
+           bspcontainer: 'ZZ_UI5_LOCAL',
+           bspcontainer_text: 'UI5 upload local objects'
         },
         resources: {
-          cwd: `build-folder`,
-          src: `**/*.*`
+          cwd: 'build-folder',
+          src: '**/*.*'
         }
       }
     }
@@ -84,14 +84,14 @@ grunt.initConfig({
 ### Upload to a transport tracked package
 
 ```js
-var sUser = grunt.option(`user`);
-var sPwd = grunt.option(`pwd`);
+var sUser = grunt.option('user');
+var sPwd = grunt.option('pwd');
 
 grunt.initConfig({
   nwabap_ui5uploader: {
     options: {
       conn: {
-        server: `http://myserver:8000`,
+        server: 'http://myserver:8000',
       },
       auth: {
         user: sUser,
@@ -101,14 +101,14 @@ grunt.initConfig({
     upload_build: {
       options: {
         ui5: {
-           package: `ZZ_UI5_REPO`,
-           bspcontainer: `ZZ_UI5_TRACKED`,
-           bspcontainer_text: `UI5 upload`,
-           transportno: `DEVK900000`
+           package: 'ZZ_UI5_REPO',
+           bspcontainer: 'ZZ_UI5_TRACKED',
+           bspcontainer_text: 'UI5 upload',
+           transportno: 'DEVK900000'
         },
         resources: {
-          cwd: `build-folder`,
-          src: `**/*.*`
+          cwd: 'build-folder',
+          src: '**/*.*'
         }
       }
     }
@@ -119,50 +119,50 @@ grunt.initConfig({
 ### Upload to different servers
 
 ```js
-var sUser = grunt.option(`user`);
-var sPwd = grunt.option(`pwd`);
+var sUser = grunt.option('user');
+var sPwd = grunt.option('pwd');
 
 grunt.initConfig({
   nwabap_ui5uploader: {
     upload_build_740: {
       options: {
         conn: {
-          server: `http://myserver740:8000`,
+          server: 'http://myserver740:8000',
         },
         auth: {
           user: sUser,
           pwd: sPwd
         },      
         ui5: {
-           package: `ZZ_UI5_REPO`,
-           bspcontainer: `ZZ_UI5_TRACKED`,
-           bspcontainer_text: `UI5 upload`,
-           transportno: `DEVK900000`
+           package: 'ZZ_UI5_REPO',
+           bspcontainer: 'ZZ_UI5_TRACKED',
+           bspcontainer_text: 'UI5 upload',
+           transportno: 'DEVK900000'
         },
         resources: {
-          cwd: `build-folder`,
-          src: `**/*.*`
+          cwd: 'build-folder',
+          src: '**/*.*'
         }
       }
     },
     upload_build_750: {
       options: {
         conn: {
-          server: `http://myserver750:8000`,
+          server: 'http://myserver750:8000',
         },
         auth: {
           user: sUser,
           pwd: sPwd
         },      
         ui5: {
-           package: `ZZ_UI5_REPO`,
-           bspcontainer: `ZZ_UI5_TRACKED`,
-           bspcontainer_text: `UI5 upload`,
-           transportno: `DEVK900000`
+           package: 'ZZ_UI5_REPO',
+           bspcontainer: 'ZZ_UI5_TRACKED',
+           bspcontainer_text: 'UI5 upload',
+           transportno: 'DEVK900000'
         },
         resources: {
-          cwd: `build-folder`,
-          src: `**/*.*`
+          cwd: 'build-folder',
+          src: '**/*.*'
         }
       }
     }    

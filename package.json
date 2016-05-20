@@ -19,7 +19,8 @@
     "url": "http://scm.ilc.local/gulp-nwabap-ui5uploader"
   },
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "gulp test",
+    "lint": "gulp lint"
   },
   "dependencies": {
     "async": "^1.5.2",
@@ -31,8 +32,12 @@
   },
   "devDependencies": {
     "chai": "~2.2.0",
+    "chai-fs": "git+https://github.com/chaijs/chai-fs.git",
     "clear": "0.0.1",
+    "eslint": "^2.10.2",
+    "eslint-config-defaults": "^9.0.0",
     "gulp": "~3.8.11",
+    "gulp-eslint": "^2.0.0",
     "gulp-jshint": "~1.10.0",
     "gulp-mocha": "~0.4.1",
     "jshint": "^2.9.2",
