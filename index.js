@@ -6,8 +6,8 @@ var Filestore   = require('./lib/filestore'),
     through     = require('through2'),
     PluginError = require('gulp-util').PluginError;
 
-// Consts
-const PLUGIN_NAME = 'gulp-nwabap-ui5uploader';
+// Constants
+var PLUGIN_NAME = 'gulp-nwabap-ui5uploader';
 
 module.exports = function (options) {
     if (typeof options !== 'object') {

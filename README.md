@@ -27,6 +27,7 @@ var ui5uploader = require('gulp-nwabap-ui5uploader');
 gulp.task('deploy', function() {
   return gulp.src('build/**')
     .pipe(ui5uploader({
+        root: 'build/webapp',
         conn: {
             server: 'http://myserver:8000'
         },
@@ -39,143 +40,53 @@ gulp.task('deploy', function() {
             bspcontainer: 'ZZ_UI5_LOCAL',
             bspcontainer_text: 'UI5 upload local objects'
         },
-        resources: {
-            cwd: 'build-folder',
-            src: '**/*.*'
-        }        
     }));
 });
 ```
 
-### Upload to `$TMP` package
-
-```js
-var sUser = grunt.option('user');
-var sPwd = grunt.option('pwd');
-
-grunt.initConfig({
-  nwabap_ui5uploader: {
-    options: {
-      conn: {
-        server: 'http://myserver:8000',
-      },
-      auth: {
-        user: sUser,
-        pwd: sPwd
-      }
-    },
-    upload_build: {
-      options: {
-        ui5: {
-           package: '$TMP',
-           bspcontainer: 'ZZ_UI5_LOCAL',
-           bspcontainer_text: 'UI5 upload local objects'
-        },
-        resources: {
-          cwd: 'build-folder',
-          src: '**/*.*'
-        }
-      }
-    }
-  }
-});
-```
 
 ### Upload to a transport tracked package
 
 ```js
-var sUser = grunt.option('user');
-var sPwd = grunt.option('pwd');
+var gulp = require('gulp');
+var ui5uploader = require('gulp-nwabap-ui5uploader');
 
-grunt.initConfig({
-  nwabap_ui5uploader: {
-    options: {
-      conn: {
-        server: 'http://myserver:8000',
-      },
-      auth: {
-        user: sUser,
-        pwd: sPwd
-      }
-    },
-    upload_build: {
-      options: {
-        ui5: {
-           package: 'ZZ_UI5_REPO',
-           bspcontainer: 'ZZ_UI5_TRACKED',
-           bspcontainer_text: 'UI5 upload',
-           transportno: 'DEVK900000'
-        },
-        resources: {
-          cwd: 'build-folder',
-          src: '**/*.*'
-        }
-      }
-    }
-  }
-});
-```
-
-### Upload to different servers
-
-```js
-var sUser = grunt.option('user');
-var sPwd = grunt.option('pwd');
-
-grunt.initConfig({
-  nwabap_ui5uploader: {
-    upload_build_740: {
-      options: {
+gulp.task('deploy', function() {
+  return gulp.src('build/**')
+    .pipe(ui5uploader({
+        root: 'build/webapp',
         conn: {
-          server: 'http://myserver740:8000',
+            server: 'http://myserver:8000'
         },
         auth: {
-          user: sUser,
-          pwd: sPwd
-        },      
+            user: 'username',
+            pwd: 'password'
+        },
         ui5: {
-           package: 'ZZ_UI5_REPO',
-           bspcontainer: 'ZZ_UI5_TRACKED',
-           bspcontainer_text: 'UI5 upload',
-           transportno: 'DEVK900000'
+            package: 'ZZ_UI5_REPO',
+            bspcontainer: 'ZZ_UI5_TRACKED',
+            bspcontainer_text: 'UI5 upload',
+            transportno: 'DEVK900000'
         },
-        resources: {
-          cwd: 'build-folder',
-          src: '**/*.*'
-        }
-      }
-    },
-    upload_build_750: {
-      options: {
-        conn: {
-          server: 'http://myserver750:8000',
-        },
-        auth: {
-          user: sUser,
-          pwd: sPwd
-        },      
-        ui5: {
-           package: 'ZZ_UI5_REPO',
-           bspcontainer: 'ZZ_UI5_TRACKED',
-           bspcontainer_text: 'UI5 upload',
-           transportno: 'DEVK900000'
-        },
-        resources: {
-          cwd: 'build-folder',
-          src: '**/*.*'
-        }
-      }
-    }    
-  }
+    }));
 });
 ```
-
 
 ## API
 
 ### `ui5uploader(options)`
 
 #### `options`
+
+##### `root`
+Type: `String`
+
+Defines the (relative) root of the UI5 web app.
+
+To be checked:
+```
+Defines the base folder which contains the sources (for instance `build`). It should be avoided to use everything from the ``webapp`` folder, because some directories in it should not be packaged and uploaded into a BSP application. To create a build, use another grunt task to copy the relevant files to the ``build`` folder. In addition for instance you can use the [openui5_preload] (https://github.com/SAP/grunt-openui5#openui5_preload) task from the ``grunt-openui5`` plugin to create a component preload file.
+```
 
 ##### `conn`
 
@@ -189,12 +100,12 @@ Defines SAP NetWeaver ABAP server (for instance `http://myserver:8000`).
 ###### `user`
 Type: `String`
 
-Defines the user which is used for access to the SAP NetWeaver ABAP server. It is not recommended to store the user in the Grunt file. It should be passed as argument.
+Defines the user which is used for access to the SAP NetWeaver ABAP server. It is not recommended to store the user in the Gulp file. It should be passed as argument.
 
 ###### `pwd`
 Type: `String`
 
-Defines the users password for access to the SAP NetWeaver ABAP server. It is not recommended to store the password in the Grunt file. It should be passed as argument. Do also not store the password as not masked value in a CI server environment. Use plugins to create masked variables (for instance the `Mask Passwords Plugin` for Jenkins).
+Defines the users password for access to the SAP NetWeaver ABAP server. It is not recommended to store the password in the Gulp file. It should be passed as argument. Do also not store the password as not masked value in a CI server environment. Use plugins to create masked variables (for instance the `Mask Passwords Plugin` for Jenkins).
 
 ##### `ui5`
 
@@ -218,19 +129,6 @@ Type: `String`
 Optional in case options.ui5.package is set to `$TMP`.
 
 Defines the transport number which logs the changes. For the transport number it would also make sense to pass it via an argument.
-
-#### `resources`
-
-##### `cwd`
-Type: `String`
-
-Defines the base folder which contains the sources (for instance `build`). It should be avoided to use everything from the ``webapp`` folder, because some directories in it should not be packaged and uploaded into a BSP application. To create a build, use another grunt task to copy the relevant files to the ``build`` folder. In addition for instance you can use the [openui5_preload] (https://github.com/SAP/grunt-openui5#openui5_preload) task from the ``grunt-openui5`` plugin to create a component preload file.
-
-##### `src`
-Type: `String` or `array of String` 
-
-Defines files for upload.
-
 
 ## Release History
 

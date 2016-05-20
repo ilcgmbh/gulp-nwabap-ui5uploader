@@ -2,7 +2,7 @@
 
 var chai        = require('chai'),
     expect      = require('chai').expect,
-    fs          = require('fs'),
+//    fs          = require('fs'),
     gulp        = require('gulp'),
 //    gutils      = require('gulp-util'),
 //    PassThrough = require('stream').PassThrough,
