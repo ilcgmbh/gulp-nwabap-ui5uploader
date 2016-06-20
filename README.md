@@ -81,12 +81,7 @@ gulp.task('deploy', function() {
 ##### `root`
 Type: `String`
 
-Defines the (relative) root of the UI5 web app.
-
-To be checked:
-```
-Defines the base folder which contains the sources (for instance `build`). It should be avoided to use everything from the ``webapp`` folder, because some directories in it should not be packaged and uploaded into a BSP application. To create a build, use another grunt task to copy the relevant files to the ``build`` folder. In addition for instance you can use the [openui5_preload] (https://github.com/SAP/grunt-openui5#openui5_preload) task from the ``grunt-openui5`` plugin to create a component preload file.
-```
+Defines the (relative) root of the UI5 web app. This relative path will be stripped in deployment.
 
 ##### `conn`
 
@@ -138,7 +133,7 @@ Defines the transport number which logs the changes. For the transport number it
 
 > The MIT License (MIT)
 >
-> Copyright © 2016 ILC GmbH, support@ilc-solutions.de
+> Copyright © 2016 ILC GmbH, opensource@ilc-solutions.de
 >
 > Permission is hereby granted, free of charge, to any person obtaining a copy of
 > this software and associated documentation files (the “Software”), to deal in
@@ -156,3 +151,7 @@ Defines the transport number which logs the changes. For the transport number it
 > COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 > IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 > CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Parts of this work (filestore.js, filestoreutils.js) are derived from
+[grunt-nwabap-ui5uploader](https://github.com/pfefferf/grunt-nwabap-ui5uploader).
+These parts are originally licensed under the Apache-2.0 license by Florian Pfeffer.

@@ -1,1 +1,3 @@
-(no releases yet)
+## 0.1.0 (2016-06-120)
+
+- Initial release

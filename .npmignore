@@ -1,4 +1,6 @@
 .gitignore
 .jshintrc
-gulpfile.js
+.eslintrc
+gulpfile.*
 test/*
+.idea
