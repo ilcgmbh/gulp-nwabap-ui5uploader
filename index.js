@@ -41,6 +41,10 @@ module.exports = function (options) {
         throw new PluginError(PLUGIN_NAME, '"ui5.bspcontainer" option must not be longer than 15 characters.');
     }
 
+    if (!options.ui5.language) {
+        options.ui5.language = 'EN';
+    }
+
     var sources = [];
 
     var cwd = options.root ? path.resolve(options.root) : process.cwd();

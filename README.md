@@ -125,6 +125,13 @@ Optional in case options.ui5.package is set to `$TMP`.
 
 Defines the transport number which logs the changes. For the transport number it would also make sense to pass it via an argument.
 
+###### `language`
+Type: `String`
+Default: `EN`
+
+Defines the objects original language.
+
+
 ## Release History
 
 [CHANGELOG.md](CHANGELOG.md)
