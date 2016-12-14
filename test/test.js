@@ -104,7 +104,7 @@ describe('gulp-nwabap-ui5uploader', function () {
 
                 expect(function () {
                     return ui5uploader(opts);
-                }).to.throw('"ui5.bspcontainer" option must not be longer than 15 characters.');
+                }).to.throw('"ui5.bspcontainer" option must not be longer than 15 characters (exclusive customer specific namespace e.g. /YYY/.');
             });
 
             it('should throw if no transportno given for non-local packages', function () {
@@ -157,7 +157,8 @@ describe('gulp-nwabap-ui5uploader', function () {
                 .pipe(ui5uploader(opts))
                 .on('end', function() {
                     done();
-                });
+                })
+                .resume();
         });
     });
 });

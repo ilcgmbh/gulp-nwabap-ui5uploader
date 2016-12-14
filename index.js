@@ -42,8 +42,8 @@ module.exports = function (options) {
     }
 
     var bspcontainerExclNamespace = options.ui5.bspcontainer.substring(options.ui5.bspcontainer.lastIndexOf('/') + 1);
-    if (bspcontainerExclNamespace > 15) {
-        throw new PluginError(PLUGIN_NAME, '"ui5.bspcontainer" option must not be longer than 15 characters (exclusive customer specific namespace e.g. /YYY/..');
+    if (bspcontainerExclNamespace.length > 15) {
+        throw new PluginError(PLUGIN_NAME, '"ui5.bspcontainer" option must not be longer than 15 characters (exclusive customer specific namespace e.g. /YYY/.');
     }
 
     if (!options.ui5.language) {
