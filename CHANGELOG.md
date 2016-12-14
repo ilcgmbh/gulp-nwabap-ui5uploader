@@ -1,8 +1,11 @@
 ## 0.2.0 (unreleased)
 
+### New Features
+- \#2 Provide Language
+ 
 ### Fixes
-- \#2 Provide Language 
 - Restrict BPS-Container length to 15 characters without namespace
+- Sometimes missing URL-Encoding of BSP Container
 
 ## 0.1.1 (2016-06-12)
 
