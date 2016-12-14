@@ -1,4 +1,4 @@
-## 0.2.0 (unreleased)
+## 0.2.0 (2016-12-14)
 
 ### New Features
 - \#1 Provide Client ID for communication with NW 
