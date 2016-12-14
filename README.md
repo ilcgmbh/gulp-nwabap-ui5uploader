@@ -112,7 +112,7 @@ Defines the development package in which the BSP container for the UI5 sources i
 ###### `bspcontainer`
 Type: `String`
 
-Defines the name of the BSP container used for the storage of the UI5 sources.
+Defines the name of the BSP container used for the storage of the UI5 sources. Length is restricted to 15 characters (exclusive customer specific namespaces, e.g. /YYY/).
 
 ###### `bspcontainer_text`
 Type: `String`
