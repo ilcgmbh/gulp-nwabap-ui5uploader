@@ -90,6 +90,11 @@ Type: `String`
 
 Defines SAP NetWeaver ABAP server (for instance `http://myserver:8000`).
 
+#### `client`
+Type: `String`
+
+Optional parameter to specify the client (transferred as sap-client URL parameter). In case the option is not specified the default client is used if specified.
+
 ###### `useStrictSSL`
 Type: `Boolean`
 Default: `true`
@@ -138,7 +143,7 @@ Default: `EN`
 
 Defines the objects original language.
 
-#### options.ui5.calc_appindex
+#### `calc_appindex`
 Type: `Boolean`
 Default: `false`
 
