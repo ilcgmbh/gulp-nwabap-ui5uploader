@@ -90,6 +90,13 @@ Type: `String`
 
 Defines SAP NetWeaver ABAP server (for instance `http://myserver:8000`).
 
+###### `useStrictSSL`
+Type: `Boolean`
+Default: `true`
+
+SSL mode handling. In case of self signed certificates the useStrictSSL mode option can be set to false to allow an upload of files.
+
+
 ##### `auth`
 
 ###### `user`

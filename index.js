@@ -29,6 +29,10 @@ module.exports = function (options) {
         throw new PluginError(PLUGIN_NAME, '"conn" option not (fully) specified (check server).');
     }
 
+    if (!options.conn.hasOwnProperty('useStrictSSL')){
+        options.conn.useStrictSSL = true;
+    }
+
     if (!options.ui5 || !options.ui5.package || !options.ui5.bspcontainer || !options.ui5.bspcontainer_text) {
         throw new PluginError(PLUGIN_NAME, '"ui5" option not (fully) specified (check package, BSP container, BSP container text information).');
     }

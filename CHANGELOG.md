@@ -2,6 +2,7 @@
 
 ### New Features
 - \#2 Provide Language
+- Added Parameter for SSL-Handling
  
 ### Fixes
 - Restrict BPS-Container length to 15 characters without namespace
