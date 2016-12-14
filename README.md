@@ -138,6 +138,12 @@ Default: `EN`
 
 Defines the objects original language.
 
+#### options.ui5.calc_appindex
+Type: `Boolean`
+Default: `false`
+
+Specify if you require the application index (program /UI5/APP_INDEX_CALCULATE) for the application to be recalculated after the BSP application is uploaded.
+Note: This only works with team repository provider version 1.30.x or higher and User Interface Add-On 2.0 for SAP NetWeaver.
 
 ## Release History
 

@@ -2,6 +2,7 @@
 
 ### New Features
 - \#2 Provide Language
+- \#3 Calculate SAPUI5 Application Index 
 - Added Parameter for SSL-Handling
  
 ### Fixes
