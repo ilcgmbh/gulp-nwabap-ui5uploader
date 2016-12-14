@@ -16,6 +16,7 @@
 ### Minor improvements
 - Update dependency to Unirest 0.5.1
 - Skip support for node < 4.0.0 
+- Forwarding Errors in case CSRF Token determination fails
 
 ## 0.1.1 (2016-06-12)
 
