@@ -10,6 +10,7 @@
 - Restrict BPS-Container length to 15 characters without namespace
 - Sometimes missing URL-Encoding of BSP Container
 - Namespace handling for file comparison.
+- Crash caused by empty files
 
 ### Minor improvements
 - Update dependency to Unirest 0.5.1
