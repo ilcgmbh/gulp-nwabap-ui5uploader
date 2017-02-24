@@ -4,7 +4,7 @@ var chai        = require('chai'),
     expect      = require('chai').expect,
 //    fs          = require('fs'),
     gulp        = require('gulp'),
-//    gutils      = require('gulp-util'),
+    gutils      = require('gulp-util'),
 //    PassThrough = require('stream').PassThrough,
     path        = require('path'),
     ui5uploader = require('../index');
@@ -159,6 +159,34 @@ describe('gulp-nwabap-ui5uploader', function () {
                     done();
                 })
                 .resume();
+        });
+    });
+
+    context('when deleting a file', function () {
+        it('should not throw any exception', function (done) {
+            this.timeout(20000);
+
+            var config = path.resolve('test/test-config.json');
+            expect(config).to.be.a.file('Please create with options to use.').with.json;
+
+            opts = require(config);
+
+            gutils.log('Preparing:');
+            gulp.src(fixtures('**/*.html'))
+                .pipe(ui5uploader(opts))
+                .on('end', function() {
+
+
+                    gutils.log('Modifying:');
+                    gulp.src([fixtures('**/*'), '!**/view/*'])
+                        .pipe(ui5uploader(opts))
+                        .on('end', function () {
+                            done();
+                        })
+                        .resume();
+                })
+                .resume();
+
         });
     });
 });
