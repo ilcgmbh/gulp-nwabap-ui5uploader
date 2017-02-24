@@ -1,3 +1,12 @@
+## 0.3.0 (unpublished)
+
+### New Features
+- \#7 - Immediately write out log and handle exceptions better
+
+### Fixes
+- Ignore all slashes at end of server url
+
+
 ## 0.2.0 (2016-12-14)
 
 ### New Features
@@ -18,10 +27,12 @@
 - Skip support for node < 4.0.0 
 - Forwarding Errors in case CSRF Token determination fails
 
+
 ## 0.1.1 (2016-06-12)
 
 ### Fixes
 - Updated documentation
+
 
 ## 0.1.0 (2016-06-12)
 

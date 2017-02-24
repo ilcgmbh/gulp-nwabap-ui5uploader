@@ -56,7 +56,7 @@ module.exports = function (options) {
 
     return through.obj(
         // Transform
-        function (file, enc, cb) {
+        function (file, enc, done) {
             if (file.isStream()) {
                 this.emit(
                     'error',
@@ -72,11 +72,11 @@ module.exports = function (options) {
             }
 
             sources.push(file);
-            cb(null, file);
+            done(null, file);
         },
 
         // Flush
-        function (cb) {
+        function (done) {
             var store = new Filestore(options);
 
             sources = sources.filter(function(source) {
@@ -88,18 +88,12 @@ module.exports = function (options) {
             });
 
             var me = this;
-            store.syncFiles(s, cwd, function (error, syncedfiles) {
+            store.syncFiles(s, cwd, function (error) {
                 if (error) {
                     me.emit('error', new PluginError(PLUGIN_NAME, error));
                 }
 
-                if (syncedfiles) {
-                    syncedfiles.forEach(function (oItem) {
-                        gutil.log(PLUGIN_NAME, 'Uploaded:', oItem.type, oItem.id, oItem.modif + 'd.');
-                    });
-                }
-
-                cb();
+                done();
             });
         }
     );
