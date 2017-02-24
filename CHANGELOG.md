@@ -1,4 +1,4 @@
-## 0.3.0 (unpublished)
+## 0.3.0 (2017-02-24)
 
 ### New Features
 - \#7 - Immediately write out log and handle exceptions better
