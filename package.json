@@ -1,6 +1,6 @@
 {
   "name": "gulp-nwabap-ui5uploader",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Deploying a SAPUI5/OpenUI5 file structure to SAP NetWeaver ABAP via ADT (ABAP Devbeloper Tools) using a gulp task",
   "keywords": [
     "gulpplugin",
