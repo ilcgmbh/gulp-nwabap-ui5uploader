@@ -1,4 +1,4 @@
-# gulp-nwabap-ui5uploader
+# gulp-nwabap-ui5uploader [![npm](https://img.shields.io/npm/v/gulp-nwabap-ui5uploader.svg)](https://www.npmjs.com/package/gulp-nwabap-ui5uploader)
 
 `gulp-nwabap-ui5uploader` is a Gulp plugin which allows a developer to upload SAPUI5/OpenUI5 sources into a SAP NetWeaver ABAP system as part of the Gulp task chain. The behavior is (or should be) the same than it is known from the SAP Web IDE app deployment option "Deploy to SAPUI5 ABAP Repository" or from the "SAPUI5 ABAP Repository Team Provider" available for Eclipse via the "UI Development Toolkit for HTML5".
 The plugin allows a developer to deploy the sources to a SAP NetWeaver ABAP system by a Gulp task using a different IDE than Eclipse or SAP Web IDE (for instance WebStorm). The main benefit is to integrate the deployment process into a Continuous Integration environment, in which for instance a Jenkins server executes several build steps and finally deploys the sources to a SAP NetWeaver ABAP system if all previous build steps are ok.  
