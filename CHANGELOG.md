@@ -1,3 +1,9 @@
+## 0.4.0 / 0.4.1 (2017-04-27)
+
+### Fixes
+- \#6 Deleting files fails
+
+
 ## 0.3.0 (2017-02-24)
 
 ### New Features
